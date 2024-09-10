@@ -1,20 +1,21 @@
 <?php
-
 $submit = false;
 $server = "localhost";
 $username = "root";
 $password = "";
-$database = "anurag_demo";
-
+$database = "student";
+$isRegistered = false;
 // Establish the database connection
 $con = new mysqli($server, $username, $password, $database);
 
 // Check connection
-if ($con->connect_error) {
+if ($con->connect_error) 
+{
     die("Connection failed: " . $con->connect_error);
 }
 
 // Retrieve and sanitize input data
+
 $name = isset($_POST['name']) ? $_POST['name'] : '';
 $registration = isset($_POST['Registration']) ? $_POST['Registration'] : '';
 $email = isset($_POST['email']) ? $_POST['email'] : '';
@@ -26,10 +27,11 @@ $sem = isset($_POST['sem']) && $_POST['sem'] !== 'none' ? $_POST['sem'] : '';
 
 // Validate inputs
 if (!empty($name) && !empty($registration) && !empty($email) && !empty($phone) &&
-    !empty($college) && !empty($branch) && !empty($year) && !empty($sem)) {
+    !empty($college) && !empty($branch) && !empty($year) && !empty($sem)) 
+    {
     
     // Prepare the SQL statement
-    $sql = "INSERT INTO `sing_form` (`name`, `registration no.`, `email`, `phone`, `college`, `branch`, `year`, `sem`, `date`) 
+    $sql = "INSERT INTO `student_details` (`name`, `registration no.`, `email`, `phone`, `college`, `branch`, `year`, `sem`, `date`) 
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP())";
 
     $stmt = $con->prepare($sql);
@@ -45,8 +47,9 @@ if (!empty($name) && !empty($registration) && !empty($email) && !empty($phone) &
     if ($stmt->execute()) {
         // echo "Successfully submitted";
         $submit = true;
+        $isRegistered = true;
     } else {
-        echo "ERROR: " . $stmt->error;
+        echo " ERROR: " . $stmt->error;
     }
 
     // Close the statement
@@ -56,8 +59,7 @@ if (!empty($name) && !empty($registration) && !empty($email) && !empty($phone) &
 // Close the connection
 $con->close();
 
-?> 
-
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,18 +68,15 @@ $con->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-  
-
+    <link rel="stylesheet" href="userDetails.css">
 </head>
 
 <body>
 
-<div id="sign">
+    <div id="sign">
 
-        <form action="index1.php" method="post" id="signinform">
-
-            <a href="https://vignan.ac.in" target=" main"><img src="https://www.vignan.ac.in/images/LOGO_change.jpg"
+        <form action="userDetails.php" method="post" id="signinform">
+            <a href="https://vignan.ac.in" target="main"><img src="https://www.vignan.ac.in/images/LOGO_change.jpg"
                     width="300px"></img></a><br>
             <label for="name">Enter Your Name:</label> <br>
             <input type="text" id="name" name="name" placeholder="your Name" required><br>
@@ -97,22 +96,22 @@ $con->close();
 
 
             <label for="branch">Select Branch:</label><br>
-            <select name="branch" id="branch">
+            <select name="branch" id="branch" required>
                 <option value="none"></option>
                 <option value="ECE">ECE</option>
                 <option value="CSE">CSE</option>
-                <option value="IT">IT</option>
-                <option value="AU">AU</option>
-                <option value="ME">ME</option>
-                <option value="BM">BM</option>
-                <option value="BT">BT</option>
-                <option value="CE">CE</option>
-                <option value="CH">CH</option>
-                <option value="FD">FD</option>
+                <option value="ITE">ITE</option>
+                <option value="AUE">AUE</option>
+                <option value="MEE">MEE</option>
+                <option value="BME">BME</option>
+                <option value="BTE">BTE</option>
+                <option value="CEE">CEE</option>
+                <option value="CHE">CHE</option>
+                <option value="FDE">FDE</option>
             </select><br>
 
             <label for="year">Select Year:</label><br>
-            <select name="year" id="year">
+            <select name="year" id="year" required>
                 <option value="none"></option>
                 <option value="1st year">1st year</option>
                 <option value="2nd year">2nd year</option>
@@ -121,7 +120,7 @@ $con->close();
             </select><br>
 
             <label for="sem">Select Semester:</label><br>
-            <select name="sem" id="sem">
+            <select name="sem" id="sem" required>
                 <option value="none"></option>
                 <option value="1st sem">1st sem</option>
                 <option value="2nd sem">2nd sem</option>
@@ -133,17 +132,11 @@ $con->close();
         <?php
         if($submit == true)
         {
-        echo "<h1 id = 'submitted'> Successfully submitted </h1>";
+            header("Location: userpsw.php");
         }
-        ?>
+       ?>
     </div>
-
-    <script src="index.js">
-        
-    </script>
-    <!-- INSERT INTO `sing_form` (`name`, `registration no.`, `email`, `phone`, `college`, `branch`, `year`, `sem`, `date`)
-    VALUES ('gyandeep kumar', '221fa05230', 'gyandeep@gmail.com', '1234567890', 'vignan', 'ece', '3', '1st',
-    CURRENT_DATE()); -->
-
+    <script src="index.js"></script>
 </body>
+
 </html>

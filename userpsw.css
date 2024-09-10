@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(30, 210, 147);
+}
+#loginForm 
+{
+    width: 350px;
+    padding: 20px;
+    margin: 50px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#loginForm label 
+{
+    padding: 10px 10px 10px 0;
+    display: inline-block;
+}
+
+#loginForm input[type=text],
+#loginForm input[type=password] 
+{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 6px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: medium;
+}
+#loginForm #passtext{
+    text-align: center;
+}
+
+#loginForm button[type=submit] 
+{
+    background-color: green;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+#loginForm button[type=submit]:hover 
+{
+    opacity: 0.8;
+}

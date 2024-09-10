@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(26, 212, 169);
+}
+
+#loginForm {
+    width: 350px;
+    padding: 20px;
+    margin: 50px auto;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#loginForm label {
+    padding: 10px 10px 10px 0;
+    display: inline-block;
+}
+
+#loginForm input[type=text],
+#loginForm input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 6px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: medium;
+}
+#loginForm #passtext{
+    color: red;
+    text-align: center;
+}
+#loginForm button[type=submit] {
+    background-color: green;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+#loginForm button[type=submit]:hover {
+    opacity: 0.8;
+}
+
+#loginForm #cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#loginForm #cancelbtn:hover {
+    opacity: 0.8;
+}
+
+#loginForm .psw {
+    float: right;
+    padding-top: 16px;
+}
