@@ -15,8 +15,5 @@
 
     <script src="index.js">
     </script>
-    <!-- INSERT INTO `sing_form` (`name`, `registration no.`, `email`, `phone`, `college`, `branch`, `year`, `sem`, `date`)
-    VALUES ('gyandeep kumar', '221fa05230', 'gyandeep@gmail.com', '1234567890', 'vignan', 'ece', '3', '1st',
-    CURRENT_DATE()); -->
 </body>
 </html>
